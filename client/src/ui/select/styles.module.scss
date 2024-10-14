@@ -1,0 +1,81 @@
+.selectContainer {
+  position: relative;
+  display: inline-block;
+  width: max-content;
+  font-size: 18px;
+}
+
+.selectHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #fff;
+  transition: border-color 0.3s;
+}
+
+.selectHeader:hover {
+  border-color: #007bff;
+}
+
+.selectedText {
+  white-space: nowrap; /* Не переносить текст на новую строку */
+}
+
+.arrow {
+  margin-left: 10px;
+}
+
+.optionsContainer {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.option {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.option:hover {
+  background-color: #f0f0f0; 
+}
+
+/* Медиазапросы для уменьшения шрифтов и размеров элементов на малых экранах */
+@media (max-width: 768px) {
+  .selectContainer {
+    font-size: 16px;
+  }
+
+  .selectHeader {
+    padding: 8px;
+  }
+
+  .option {
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .selectContainer {
+    font-size: 14px;
+  }
+
+  .selectHeader {
+    padding: 6px;
+  }
+
+  .option {
+    padding: 6px;
+  }
+}

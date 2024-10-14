@@ -1,0 +1,101 @@
+.appContainer{
+width: 100%;
+max-width: 1440px;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  
+  font-family: "Montserrat", sans-serif;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: 600;
+}
+h1 {
+  @media (max-width:900px) {
+    font-size: 30px;
+  }
+}
+h1 {
+  @media (max-width:600px) {
+    font-size: 24px;
+  }
+}
+.leaflet-container {
+  height: 400px !important;
+
+  width: 100% !important;
+
+}
+a {
+  color: rgba(40,40,40,0.7);
+  font-size: 20px;
+  text-decoration: none;
+  transition: font-weight 0.3s, color 0.3s;
+
+}
+
+a:hover {
+  color: #282828;
+ 
+  font-weight: 600;
+  text-decoration: none;
+}
+
+
+a:active {
+  color: #282828;
+
+}
+
+/* .selectContainer {
+  position: relative;
+  display: inline-block;
+} */
+
+.select-container {
+  position: relative;
+  display: inline-block;
+}
+
+select {
+  display: inline-block;
+  width: auto;
+  /* Автоматическая ширина */
+  min-width: 100px;
+  /* Минимальная ширина */
+  max-width: 200px;
+  /* Максимальная ширина, чтобы не растягивалось слишком много */
+  height: 36px;
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+select:focus {
+  border-color: #007bff;
+  /* Цвет рамки при фокусе */
+  outline: none;
+  /* Убираем стандартный контур */
+}
+
+select:disabled {
+  background-color: #f9f9f9;
+  /* Цвет фона для отключенного состояния */
+  color: #aaa;
+  /* Цвет текста для отключенного состояния */
+  cursor: not-allowed;
+  /* Курсор неразрешен */
+}
+
+select:hover {
+  border-color: #007bff;
+  /* Цвет рамки при наведении */
+}

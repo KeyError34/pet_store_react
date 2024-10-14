@@ -1,0 +1,9 @@
+@import '../../styles/mixin';
+
+.flexBox{
+  width: 100%;
+@include flex(row, space-around, flex-start, wrap );
+@include spacing(0, 2.8% );
+ gap: 2.1%;
+
+}

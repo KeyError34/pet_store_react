@@ -1,0 +1,62 @@
+@import '../../styles/mixin';
+@import '../../styles/variables';
+.scrollContainer {
+  display: flex;
+  overflow-x: scroll;
+  white-space: nowrap;
+  &::-webkit-scrollbar {
+    display: none;
+    scrollbar-width: none;
+   
+  }
+}
+.banerContainer {
+  width: 100%;
+  max-height: 800px;
+  aspect-ratio: 1440 / 800;
+
+  div {
+    background-image: url('../../assets/image/discont.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    @include sizing(100%, 100%);
+    @include flex(column);
+    @include spacing(0, 5.6% 2.8%);
+    gap: 5%;
+    h1 {
+      font-size: clamp(16px, 5vw, 96px);
+      font-weight: 700;
+      color: $primery_light;
+    }
+  }
+}
+
+.categoryContainer {
+  width: 100%;
+  max-width: 94.4%;
+  margin: 5.6% auto;
+  .linkToallCategories {
+    color: #bbbaba;
+    padding: 0.7% 1%;
+    font-size: 16px;
+    border: 1px solid #dddddd;
+    border-radius: 6px;
+    width: 100%;
+    max-width: max-content;
+    max-height: max-content;
+    cursor: pointer;
+    &:hover {
+      background-color: #282828;
+      color: #ffffff;
+    }
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 5px rgba(19, 14, 18, 0.5);
+    }
+    &:active {
+      background-color: #ffffff;
+      color: #282828;
+      transform: scale(0.98);
+    }
+  }
+}

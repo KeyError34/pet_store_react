@@ -1,0 +1,81 @@
+@import '../../styles/mixin';
+@import '../../styles/variables';
+
+.productCard {
+  width: 100%;
+  max-width: 316px;
+  
+  position: relative;
+  @include flex(column);
+  border: 1px solid #dddddd;
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-bottom: 2.8%;
+  &:hover {
+    box-shadow: 0 4px 15px rgba(19, 14, 18, 0.3); 
+  }
+
+  &:active {
+    transform: scale(0.95); 
+    box-shadow: 0 2px 10px rgba(19, 14, 18, 0.3);
+  }
+
+  &:checked {
+    transform: scale(1);
+  }
+  .productImage {
+    max-width: 100%;
+    max-height: 280px;
+    border-bottom: 1px solid #dddddd;
+    display: block;
+    border-radius: 12px 12px 0 0;
+    text-align: center;
+  }
+  .productTitle,
+  .productOriginalPrice,
+  .productDiscountPercentage {
+    font-size: $primery_description_nav_size;
+    font-weight: $primery_description_nav_weight;
+  }
+  .productTitle {
+    width: 100%;
+    @include spacing(0, 10% 10%);
+    @include text-ellipsis
+  }
+  .pricesContainer {
+    @include spacing(0, 0 10% 10%);
+  }
+  .pricesContainer {
+    @include flex();
+    align-items: flex-end;
+    gap: 10%;
+    .productPrice,
+    .productDiscountPrice {
+      font-size: $primery_title_size;
+      font-weight: $primery_number_weight;
+    }
+    .productDiscountPercentage {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background-color: $primery_blue;
+      border-radius: 4px;
+      color: $primery_light;
+      width: 63px;
+      height: 34px;
+      text-align: center;
+      align-content: center;
+    }
+    .productOriginalPrice {
+      opacity: 0.6;
+    }
+  }
+ .toggleButtonContainer{
+position: absolute;
+z-index: 1000;
+width: 200px;
+top: 30%;
+left: 25%;
+min-width: max-content;
+} 
+}

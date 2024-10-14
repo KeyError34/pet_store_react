@@ -1,0 +1,29 @@
+
+button {
+  width: 100%;
+  max-width: max-content;
+  padding: 10px 24px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #0d50ff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #282828;
+  color: #ffffff;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(19, 14, 18, 0.5);
+}
+
+button:active {
+  background-color: #ffffff;
+  color: #282828;
+  transform: scale(0.98);
+}

@@ -1,0 +1,28 @@
+@import '../../styles/mixin';
+@import '../../styles/variables';
+.mainSortContainer {
+  @include flex();
+  flex-wrap: wrap;
+   gap:20px;
+   align-items: center;
+
+  label {
+    display: flex;
+    align-items: center;
+    gap:8px;
+  }
+  p,Label{
+  font-size: $primery_description_nav_size;
+  font-weight: $primery_description_nav_weight;
+  }
+}
+.inputsContainer {
+  @include flex(row, flex-start, center);
+  flex-wrap: nowrap;
+   gap:12px;
+}
+.sortContainer {
+  @include flex(row, flex-start, center);
+  flex-wrap: wrap;
+    gap:12px;
+}

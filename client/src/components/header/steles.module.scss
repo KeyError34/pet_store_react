@@ -1,0 +1,39 @@
+@import '../../styles/mixin';
+.headerContainer {
+  @include flex(row, space-between, center, wrap);
+  @include spacing(0, 2.1% 2.8%);
+
+  gap: 20px;
+
+  .logoImg {
+    @include sizing(70px, 70px);
+  }
+  .basketImg {
+    @include sizing(48px, 48px);
+  }
+  .logoImg,
+  .basketImg {
+    transition: transform 0.3s ease, filter 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+    }
+    &:active{
+    transform: scale(1);
+    }
+  }
+  .basketImg{
+  position: relative;
+  }
+  .warenCount{
+  position: absolute;
+  right: 28px;
+  top:8px;
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(13, 80, 255, 1);
+  font-weight: 400;
+  padding: 2px 5px;
+  border-radius: 50%;
+}
+}

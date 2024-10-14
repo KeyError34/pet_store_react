@@ -1,0 +1,17 @@
+@import '../../styles/mixin';
+.footerContainer {
+  width: 100%;
+  max-width: 94.4%;
+  margin: 0 auto;
+  
+  @include flex(column);
+  gap: 30px;
+
+
+}
+
+.mapContainer{
+
+width: 100%;
+  
+}

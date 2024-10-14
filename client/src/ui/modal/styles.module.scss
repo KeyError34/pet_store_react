@@ -1,0 +1,76 @@
+@import '../../styles/variables';
+@import '../../styles/mixin';
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  @include flex(column, center, center);
+  gap: 20px;
+  background-color: $primery_blue;
+  color: $primery_light;
+  padding: 32px 92px 32px 32px;
+  border-radius: 5px;
+  text-align: center;
+  position: relative;
+
+  p {
+    font-size: 20px;
+
+    @media (max-width: 768px) {
+      font-size: 18px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 16px;
+    }
+  }
+}
+
+.close {
+  font-size: 40px;
+  font-weight: 600;
+  position: absolute;
+  top: 11%;
+  right: 7%;
+  cursor: pointer;
+  color: $primery_light;
+  background: transparent;
+  border: none;
+  outline: none;
+
+  &:hover {
+    color: darken($primery_light, 10%);
+    transform: scale(1.1);
+  }
+
+  &:focus {
+    outline: 2px solid $primery_light;
+    outline-offset: 4px;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 32px;
+    top: 5%;
+    right: 5%;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 24px;
+    top: 3%;
+    right: 3%;
+  }
+}

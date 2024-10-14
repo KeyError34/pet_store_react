@@ -15,7 +15,6 @@ function Nav() {
 }
   return (
     <nav className={styles.navContainer}>
-     
       <div className={styles.hamburger} onMouseEnter={toggleMenu}>
         <span className={styles.hamburgerLine}></span>
         <span className={styles.hamburgerLine}></span>
@@ -23,9 +22,11 @@ function Nav() {
         <span className={styles.hamburgerLine}></span>
       </div>
 
-    
-      <div className={`${styles.menu} ${isMenuOpen ? styles.open : ''}`} onMouseLeave={closeMenu}>
-        <NavLink className={styles.link} to="/" onClick={toggleMenu} >
+      <div
+        className={`${styles.menu} ${isMenuOpen ? styles.open : ''}`}
+        onMouseLeave={closeMenu}
+      >
+        <NavLink className={styles.link} to="/" onClick={toggleMenu}>
           Main Page
         </NavLink>
         <NavLink className={styles.link} to="/categories" onClick={toggleMenu}>
@@ -38,7 +39,7 @@ function Nav() {
         >
           All products
         </NavLink>
-        <NavLink className={styles.link} to="/all_sales" onClick={toggleMenu}>
+        <NavLink className={styles.link} to="/discounts" onClick={toggleMenu}>
           All sales
         </NavLink>
       </div>

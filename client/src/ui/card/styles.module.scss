@@ -3,7 +3,7 @@
 
 .productCard {
   width: 100%;
-  max-width: 316px;
+  max-width: 300px;
   
   position: relative;
   @include flex(column);
@@ -24,7 +24,9 @@
     transform: scale(1);
   }
   .productImage {
-    max-width: 100%;
+
+    width: 100%;
+    min-width: 290px;
     max-height: 280px;
     border-bottom: 1px solid #dddddd;
     display: block;

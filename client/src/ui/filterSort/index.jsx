@@ -1,3 +1,4 @@
+
 import React from 'react';
 import CustomSelect from '../select';
 import Input from '../input';
@@ -18,7 +19,7 @@ const FilterSort = ({
   showCategorySelect = true,
   showDiscountCheckbox = true,
 }) => {
-  function handleFilterChange(event)  {
+  function handleFilterChange(event) {
     const { name, value, type, checked } = event.target;
     if (type === 'checkbox') {
       setOnlyDiscounted(checked);
@@ -27,11 +28,11 @@ const FilterSort = ({
     } else if (name === 'maxPrice') {
       setMaxPrice(value);
     }
-  };
+  }
 
-  function handleSortChange (selectedOption)  {
+  function handleSortChange(selectedOption) {
     setSortOrder(selectedOption.value);
-  };
+  }
 
   const sortOptions = [
     { label: 'Default', value: '' },
@@ -39,10 +40,8 @@ const FilterSort = ({
     { label: ' High to Low', value: 'desc' },
   ];
 
- 
   const selectedCategoryLabel =
-    categories.find(category => category.category.id === selectedCategory)
-      ?.category.title || 'Select a category';
+    categories.find(category => category.category.id === selectedCategory)?.category.title || 'Select a category';
 
   return (
     <div className={styles.mainSortContainer}>
@@ -80,15 +79,15 @@ const FilterSort = ({
             options={sortOptions}
             value={
               sortOptions.find(opt => opt.value === sortOrder) || sortOptions[0]
-            } 
+            }
             onChange={handleSortChange}
             placeholder="by default"
           />
         </label>
       </div>
 
-      <div>
-        {showCategorySelect && (
+      {showCategorySelect && (
+        <div>
           <label>
             Category:
             <CustomSelect
@@ -100,16 +99,14 @@ const FilterSort = ({
                 })),
               ]}
               value={
-                categories.find(
-                  category => category.category.id === selectedCategory
-                ) || {}
-              } 
-              onChange={option => setSelectedCategory(option.value)} 
-              placeholder={selectedCategoryLabel} 
+                categories.find(category => category.category.id === selectedCategory) || {}
+              }
+              onChange={option => setSelectedCategory(option.value)}
+              placeholder={selectedCategoryLabel}
             />
           </label>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

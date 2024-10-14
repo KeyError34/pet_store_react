@@ -5,36 +5,41 @@ import {
   removeFromBasket,
   decrementQuantity,
   addToBasket,
+  
 } from '../../redux/slices/basketSlice';
 import Modal from '../../ui/modal';
 
 function Basket() {
   const dispatch = useDispatch();
-  const { items, totalPrice, totalDiscount, totalQuantity } = useSelector(
-    state => state.basket
-  );
+  const { items, totalPrice, totalDiscount, totalQuantity, discountApplied } =
+    useSelector(state => state.basket);
   const [modalOpen, setModalOpen] = React.useState(false);
 
-  function handleClearBasket () {
+  function handleClearBasket() {
     dispatch(clearBasket());
-  };
+  }
 
-  function handleCheckout (){
+  function handleCheckout() {
     setModalOpen(true);
-    handleClearBasket(); 
-  };
+    handleClearBasket();
+  }
 
-  function handleIncrement( item ) {
-    dispatch(addToBasket(item)); 
-  };
+  function handleIncrement(item) {
+    dispatch(addToBasket(item));
+  }
 
-  function handleDecrement  (id ) {
-    dispatch(decrementQuantity(id)); 
-  };
+  function handleDecrement(id) {
+    dispatch(decrementQuantity(id));
+  }
 
-  function handleRemove (id) {
-    dispatch(removeFromBasket(id)); 
-  };
+  function handleRemove(id) {
+    dispatch(removeFromBasket(id));
+  }
+
+  const safeTotalPrice = totalPrice > 0 ? totalPrice : 0;
+  const safeTotalDiscount = discountApplied ? totalDiscount : 0;
+
+  const finalPrice = safeTotalPrice - safeTotalDiscount;
 
   return (
     <div>
@@ -57,16 +62,21 @@ function Basket() {
               <button onClick={() => handleRemove(item.id)}>Remove</button>
             </div>
           ))}
-          <h3>Total Price: ${totalPrice}</h3>
-          <h3>Total Discount: ${totalDiscount}</h3>
+          <h3>Total Price: ${safeTotalPrice.toFixed(2)}</h3>
+
+          {discountApplied && totalDiscount > 0 && (
+            <h3>Discount Applied: ${totalDiscount.toFixed(2)}</h3>
+          )}
+          <h3>Final Price: ${finalPrice.toFixed(2)}</h3>
           <h3>Total Quantity: {totalQuantity}</h3>
+
           <button onClick={handleCheckout}>Place Order</button>
         </div>
       )}
       {modalOpen && (
         <Modal
           message1="Your order has been successfully placed on the website."
-          massage2="A manager will contact you shortly to confirm your order."
+          message2="A manager will contact you shortly to confirm your order."
           onClose={() => setModalOpen(false)}
         />
       )}

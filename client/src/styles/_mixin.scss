@@ -19,15 +19,6 @@
   box-shadow: $x $y $blur $spread $color;
 }
 
-// Пример использования:
-
-// .element {
-//   @include box-shadow(2px, 4px, 10px, 0, rgba(0, 0, 0, 0.25));
-// }
-
-// 2. Flexbox
-
-// Этот миксин можно использовать для быстрой настройки flex-контейнеров и элементов.
 
 @mixin flex(
   $direction: row,
@@ -42,62 +33,22 @@
   flex-wrap: $wrap;
 }
 
-// Пример использования:
-
-// .container {
-//   @include flex(row, space-between, center);
-// }
-
-// 3. Центрирование элемента
-
-// Этот миксин помогает быстро центрировать элемент по вертикали и горизонтали внутри родительского контейнера.
-
-@mixin center-element {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-// Пример использования:
-
-// .parent {
-//   @include center-element;
-// }
-
-// 4. Переходы (Transitions)
-
-// Этот миксин позволяет быстро добавлять переходы к элементам.
 
 @mixin transition($property: all, $duration: 0.3s, $timing: ease-in-out) {
   transition: $property $duration $timing;
 }
 
-// Пример использования:
 
-// .button {
-//   @include transition(background-color, 0.4s, ease);
-// }
-
-// 5. Текст с многоточием
-
-// Этот миксин полезен для обрезки текста с добавлением многоточия, если текст не помещается в контейнер.
-
+// Текст с многоточием
 @mixin text-ellipsis {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-// Пример использования:
 
-// .text {
-//   @include text-ellipsis;
-// }
 
-// 6. Размеры с сохранением пропорций (Aspect Ratio)
-
-// Этот миксин помогает поддерживать соотношение сторон у блоков.
-
+// Размеры с сохранением пропорций (Aspect Ratio)
 @mixin aspect-ratio($width: 16, $height: 9) {
   position: relative;
   width: 100%;
@@ -112,27 +63,8 @@
   }
 }
 
-// Пример использования:
 
-// .video-container {
-//   @include aspect-ratio(16, 9);
-// }
-
-// 7. Отступы (Margins & Paddings)
-
-// Универсальный миксин для отступов:
-
-
-// Пример использования:
-
-// .element {
-//   @include spacing(10px, 20px);
-// }
-
-// 8. Кастомный скроллбар
-
-// Этот миксин позволяет стилизовать вид скроллбара.
-
+//  Кастомный скроллбар
 @mixin custom-scrollbar($width: 10px, $color: #ccc, $trackColor: #f5f5f5) {
   &::-webkit-scrollbar {
     width: $width;
@@ -147,8 +79,3 @@
   }
 }
 
-// Пример использования:
-
-// .scrollable-element {
-//   @include custom-scrollbar(12px, #888, #eee);
-// }

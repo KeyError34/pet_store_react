@@ -3,10 +3,14 @@ import styles from './steles.module.scss';
 import ToggleButton from '../../ui/button';
 import CategoriesList from '../categoriesList';
 import Box from '@mui/material/Box';
+import Coupon from '../discountCoupon';
 function Main() {
   const navigate = useNavigate();
   function onClick() {
     navigate('/discounts');
+  }
+  function onClickToAllCategories() {
+     navigate('/categories')
   }
   return (
     <main>
@@ -37,7 +41,7 @@ function Main() {
               marginBottom: '20px',
             }}
           ></div>
-          <span className={styles.linkToallCategories} style={{}}>
+          <span className={styles.linkToallCategories} onClick={onClickToAllCategories}>
             All categories{' '}
           </span>
         </div>
@@ -58,6 +62,10 @@ function Main() {
         >
           <CategoriesList />
         </Box>
+      </div>
+      <div className={styles.discountCoupon}>
+   
+  <Coupon/>
       </div>
     </main>
   );

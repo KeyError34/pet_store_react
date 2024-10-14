@@ -21,6 +21,7 @@ function handleAddToCart () {
 
   return (
     <div>
+
       <h1>{product.title}</h1>
       <img src={`http://localhost:3333/${product.image}`} alt={product.title} />
       <p>{product.description}</p>

@@ -1,3 +1,5 @@
+
+
 import { createSlice } from '@reduxjs/toolkit';
 
 
@@ -8,15 +10,19 @@ const saveToLocalStorage = state => {
 
 const loadFromLocalStorage = () => {
   const storedBasket = localStorage.getItem('basket');
-  return storedBasket ? JSON.parse(storedBasket) : undefined;
+  return storedBasket
+    ? JSON.parse(storedBasket)
+    : {
+        items: [],
+        totalPrice: 0,
+        totalDiscount: 0,
+        totalQuantity: 0,
+        discountApplied: false, 
+      };
 };
 
-const initialState = loadFromLocalStorage() || {
-  items: [],
-  totalPrice: 0,
-  totalDiscount: 0,
-  totalQuantity: 0,
-};
+
+const initialState = loadFromLocalStorage();
 
 const basketSlice = createSlice({
   name: 'basket',
@@ -27,33 +33,33 @@ const basketSlice = createSlice({
       const existingItem = state.items.find(i => i.id === item.id);
 
       if (existingItem) {
-        existingItem.quantity += 1; 
+        existingItem.quantity += 1;
       } else {
         state.items.push({ ...item, quantity: 1 });
       }
 
-      state.totalPrice += item.price; 
-      state.totalQuantity += 1; 
+      state.totalPrice += item.price;
+      state.totalQuantity += 1;
+
       if (item.discount_price) {
-        state.totalDiscount += item.price - item.discount_price; 
+        state.totalDiscount += item.price - item.discount_price;
       }
 
-      saveToLocalStorage(state); 
+      saveToLocalStorage(state);
     },
     removeFromBasket: (state, action) => {
       const id = action.payload;
       const existingItem = state.items.find(i => i.id === id);
 
       if (existingItem) {
-        state.totalPrice -= existingItem.price * existingItem.quantity; 
+        state.totalPrice -= existingItem.price * existingItem.quantity;
         state.totalDiscount -= existingItem.discount_price
           ? existingItem.price - existingItem.discount_price
           : 0;
-        state.totalQuantity -= existingItem.quantity; 
+        state.totalQuantity -= existingItem.quantity;
 
-       
         state.items = state.items.filter(item => item.id !== id);
-        saveToLocalStorage(state); 
+        saveToLocalStorage(state);
       }
     },
     decrementQuantity: (state, action) => {
@@ -62,34 +68,49 @@ const basketSlice = createSlice({
 
       if (existingItem) {
         if (existingItem.quantity > 1) {
-          existingItem.quantity -= 1; 
-          state.totalPrice -= existingItem.price; 
-          state.totalQuantity -= 1; 
-          saveToLocalStorage(state); 
+          existingItem.quantity -= 1;
+          state.totalPrice -= existingItem.price;
+          state.totalQuantity -= 1;
         } else {
-         
           state.totalPrice -= existingItem.price;
           state.totalQuantity -= 1;
           state.items = state.items.filter(item => item.id !== id);
-          saveToLocalStorage(state); 
         }
+
+        state.totalDiscount -= existingItem.discount_price
+          ? existingItem.price - existingItem.discount_price
+          : 0;
+
+        saveToLocalStorage(state);
       }
     },
     clearBasket: state => {
       state.items = [];
       state.totalPrice = 0;
       state.totalDiscount = 0;
-      state.totalQuantity = 0; 
-
-     
+      state.totalQuantity = 0;
+      state.discountApplied = false; 
       localStorage.removeItem('basket');
+    },
+    applyDiscount: (state, action) => {
+    
+      if (!state.discountApplied) {
+        const discount = state.totalPrice * 0.05;
+        state.totalDiscount += discount;
+        state.totalPrice -= discount;
+        state.discountApplied = true; 
+      }
+      saveToLocalStorage(state);
     },
   },
 });
 
-
-export const { addToBasket, removeFromBasket, decrementQuantity, clearBasket } =
-  basketSlice.actions;
-
+export const {
+  addToBasket,
+  removeFromBasket,
+  decrementQuantity,
+  clearBasket,
+  applyDiscount,
+} = basketSlice.actions;
 
 export default basketSlice.reducer;

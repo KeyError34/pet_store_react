@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import styles from './styles.module.scss';
 import ToggleButton from '../button';
@@ -11,12 +10,22 @@ function ProductCard({
   image,
   navigatePath,
   onAddToCart,
-  isCategoryButton, 
+  isCategoryButton,
   initialText,
   toggledText,
 }) {
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
+
+  
+  function calculateDiscountPercentage(price, discountPrice) {
+    if (discountPrice && price > 0) {
+      return Math.round(((price - discountPrice) / price) * 100);
+    }
+    return null;
+  }
+
+  const discountPercentage = calculateDiscountPercentage(price, discont_price);
 
   function handleCardClick() {
     if (!isCategoryButton && navigatePath) {
@@ -25,11 +34,11 @@ function ProductCard({
   }
 
   function handleButtonClick(e) {
-    e.stopPropagation(); 
+    e.stopPropagation();
     if (isCategoryButton && navigatePath) {
-      navigate(navigatePath); 
+      navigate(navigatePath);
     } else if (onAddToCart) {
-      onAddToCart(); 
+      onAddToCart();
     }
   }
 
@@ -43,11 +52,23 @@ function ProductCard({
       <img src={image} alt={title} className={styles.productImage} />
       <h3 className={styles.productTitle}>{title}</h3>
       <div className={styles.pricesContainer}>
-        {price !== null && <p className={styles.productPrice}>${price}</p>}
-        {discont_price && (
-          <p className={styles.productDiscountPrice}>${discont_price}</p>
+        {discont_price !== null ? (
+          <>
+            <p className={styles.productDiscountPrice}>${discont_price}</p>
+            <p className={styles.productOriginalPrice}>
+              <s>${price}</s>
+            </p>
+            {discountPercentage !== null && (
+              <p className={styles.productDiscountPercentage}>
+                -{discountPercentage}%
+              </p>
+            )}
+          </>
+        ) : (
+          price !== null && <p className={styles.productPrice}>${price}</p>
         )}
       </div>
+
       {isHovered && (
         <div
           className={styles.toggleButtonContainer}

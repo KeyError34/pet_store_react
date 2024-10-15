@@ -5,15 +5,13 @@ import ToggleButton from '../../ui/button';
 import CategoriesList from '../categoriesList';
 import Box from '@mui/material/Box';
 import Coupon from '../discountCoupon';
-import DiscountedProducts from '../discountProd'; // Импортируем компонент
+import DiscountedProducts from '../discountProd';
 
 function Main() {
   const navigate = useNavigate();
 
-  // Получаем категории из состояния Redux
   const { categories } = useSelector(state => state.categories);
 
-  // Фильтруем все товары, чтобы получить только те, которые имеют скидку
   const discountedProducts = categories
     ? categories.flatMap(category =>
         category.data.filter(product => product.discont_price < product.price)
@@ -26,6 +24,9 @@ function Main() {
 
   function onClickToAllCategories() {
     navigate('/categories');
+  }
+  function onClickToAllDiscont() {
+    navigate('/discounts');
   }
 
   return (
@@ -49,14 +50,7 @@ function Main() {
           style={{ display: 'flex', marginBottom: '2.8%', alignItems: 'end' }}
         >
           <h1>Categories</h1>
-          <div
-            style={{
-              height: '1px',
-              backgroundColor: '#DDDDDD',
-              width: '70%',
-              marginBottom: '20px',
-            }}
-          ></div>
+          <div className={styles.lineCont}></div>
           <span
             className={styles.linkToallCategories}
             onClick={onClickToAllCategories}
@@ -87,28 +81,39 @@ function Main() {
         <Coupon />
       </div>
 
-      <Box
-        className={styles.scrollContainer}
-        sx={{
-          display: 'flex',
-          width: '100%',
-          minHeight: 'max-content',
-          overflowX: 'auto',
-          whiteSpace: 'nowrap',
-          padding: '16px',
-          border: 'none',
-          gap: '2%',
-          scrollbarWidth: 'none',
-        }}
-      >
-        {/* Передаем display="none", чтобы скрыть кнопку 'Load More' */}
-        <DiscountedProducts
-          style={{ flexWrap: 'nowrap' }}
-          products={discountedProducts}
-          visibleItem={4}
-          display="none"
-        />
-      </Box>
+      <div className={styles.discountContainer}>
+        <div style={{ display: 'flex', alignItems: 'end' }}>
+          <h1>Sale</h1>
+          <div className={styles.lineCont}></div>
+          <span
+            className={styles.linkToallCategories}
+            onClick={onClickToAllDiscont}
+          >
+            All sales
+          </span>
+        </div>
+        <Box
+          className={styles.scrollContainer}
+          sx={{
+            display: 'flex',
+            width: '100%',
+            minHeight: 'max-content',
+            overflowX: 'auto',
+            whiteSpace: 'nowrap',
+            padding: '16px',
+            border: 'none',
+            gap: '2%',
+            scrollbarWidth: 'none',
+          }}
+        >
+          <DiscountedProducts
+            style={{ flexWrap: 'nowrap' }}
+            products={discountedProducts}
+            visibleItem={4}
+            display="none"
+          />
+        </Box>
+      </div>
     </main>
   );
 }

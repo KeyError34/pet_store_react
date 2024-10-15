@@ -7,7 +7,6 @@
   &::-webkit-scrollbar {
     display: none;
     scrollbar-width: none;
-   
   }
 }
 .banerContainer {
@@ -30,11 +29,29 @@
     }
   }
 }
-
 .categoryContainer {
+  margin: 5.6% auto;
+}
+.discountContainer {
+  margin: 5.6% auto 0 auto;
+}
+.categoryContainer,
+.discountContainer {
   width: 100%;
   max-width: 94.4%;
-  margin: 5.6% auto;
+  .lineCont {
+    height: 1px;
+    background-color: #dddddd;
+    width: 90%;
+    margin-bottom: 20px;
+      @media (max-width: 1000px) {
+       margin-bottom: 16px;
+      }
+
+      @media (max-width: 600px) {
+        font-size: 6px;
+      }
+  }
   .linkToallCategories {
     color: #bbbaba;
     padding: 0.7% 1%;

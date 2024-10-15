@@ -166,37 +166,3 @@ max-width: 500px;
     }
   }
 }
-/* Медиазапрос для 900px */
-@media (max-width: 900px) {
-  .labelPr {
-    font-size: 28px; /* Уменьшение размера шрифта */
-
-    .totalQuantity {
-      font-size: 36px; /* Уменьшение размера текста для totalQuantity */
-    }
-  }
-}
-
-/* Медиазапрос для 700px */
-@media (max-width: 700px) {
-  .labelPr {
-    font-size: 24px; /* Уменьшение размера шрифта */
-
-    .totalQuantity {
-      padding-left: 8%; /* Изменение отступа */
-      font-size: 32px; /* Уменьшение размера текста */
-    }
-  }
-}
-
-/* Медиазапрос для 450px */
-@media (max-width: 450px) {
-  .labelPr {
-    font-size: 20px; /* Еще большее уменьшение размера шрифта */
-
-    .totalQuantity {
-      padding-left: 5%; /* Изменение отступа */
-      font-size: 28px; /* Уменьшение размера текста для маленьких экранов */
-    }
-  }
-}

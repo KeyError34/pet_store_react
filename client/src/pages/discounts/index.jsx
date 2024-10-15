@@ -1,12 +1,10 @@
-import  { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCategories } from '../../redux/slices/categoriesSlice';
-import { addToBasket } from '../../redux/slices/basketSlice';
 import NavBred from '../../ui/navRender';
 import { filterAndSortProducts } from '../../utils/filterAndSortProducts';
 import FilterSort from '../../ui/filterSort';
-import FlexBox from '../../ui/flexBox';
-import ProductCard from '../../ui/card';
+import DiscountedProducts from '../../components/discountProd';// Импортируем новый компонент
 
 function DiscountList() {
   const dispatch = useDispatch();
@@ -45,10 +43,6 @@ function DiscountList() {
     setVisibleItem(prevCount => prevCount + 4);
   }
 
-  function handleAddToCart(product) {
-    dispatch(addToBasket(product));
-  }
-
   return (
     <div style={{ width: '100%' }}>
       <div style={{ margin: '0 2.8%' }}>
@@ -79,44 +73,15 @@ function DiscountList() {
           showDiscountCheckbox={false}
         />
       </div>
-      <FlexBox>
-        {filteredAndSortedProducts.length === 0 ? (
-          <div style={{ margin: '2%', fontSize: '26px', color: 'red' }}>
-            No products available
-          </div>
-        ) : (
-          filteredAndSortedProducts
-            .slice(0, visibleItem)
-            .map(product => (
-              <ProductCard
-                key={product.id}
-                title={product.title}
-                price={product.price}
-                discont_price={product.discont_price}
-                image={`http://localhost:3333/${product.image}`}
-                navigatePath={`/category/product/${product.id}`}
-                onAddToCart={() => handleAddToCart(product)}
-                initialText="Add to Cart"
-                toggledText="Added"
-                isCategoryButton={false}
-              />
-            ))
-        )}
-      </FlexBox>
 
-      {visibleItem < filteredAndSortedProducts.length && (
-        <div
-          style={{ display: 'flex', justifyContent: 'center', margin: '10px' }}
-        >
-          <span
-            style={{ cursor: 'pointer', padding: '5px 8px' }}
-            onClick={loadMore}
-          >
-            more sales items...
-          </span>
-        </div>
-      )}
+      {/* Передаем фильтрованные и отсортированные товары в новый компонент */}
+      <DiscountedProducts
+        products={filteredAndSortedProducts}
+        visibleItem={visibleItem}
+        loadMore={loadMore}
+      />
     </div>
   );
 }
+
 export default DiscountList;

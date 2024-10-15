@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToBasket } from '../../redux/slices/basketSlice';
@@ -13,7 +13,11 @@ function ProductDetails (){
     .find(product => product.id === parseInt(productId));
 
   if (!product) {
-    return <div>Продукт не найден.</div>;
+    return (
+      <div style={{ margin: '2%', fontSize: '26px', color: 'red' }}>
+        No products available
+      </div>
+    );
   }
 function handleAddToCart () {
   dispatch(addToBasket(product)); 

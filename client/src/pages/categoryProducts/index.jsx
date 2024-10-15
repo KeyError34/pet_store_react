@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCategories } from '../../redux/slices/categoriesSlice';
@@ -52,11 +52,11 @@ function CategoryProducts() {
 
 
   if (loading) {
-    return <div>Загрузка товаров...</div>;
+    return <div>Loading...</div>;
   }
 
   if (error) {
-    return <div>Ошибка: {error}</div>;
+    return <div>Error: {error}</div>;
   }
 
   const handleAddToCart = product => {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCategories } from '../../redux/slices/categoriesSlice';
 import { addToBasket } from '../../redux/slices/basketSlice';
@@ -27,15 +27,15 @@ function DiscountList() {
   }, [dispatch]);
 
   if (loading) {
-    return <div>Загрузка...</div>;
+    return <div>Loading...</div>;
   }
 
   if (error) {
-    return <div>Ошибка: {error}</div>;
+    return <div>Error: {error}</div>;
   }
 
   if (!categories || categories.length === 0) {
-    return <div>Нет доступных категорий</div>;
+    return <div>No available categories</div>;
   }
 
   const allProducts = categories.flatMap(category => category.data);
@@ -81,7 +81,9 @@ function DiscountList() {
       </div>
       <FlexBox>
         {filteredAndSortedProducts.length === 0 ? (
-          <div>Нет доступных продуктов</div>
+          <div style={{ margin: '2%', fontSize: '26px', color: 'red' }}>
+            No products available
+          </div>
         ) : (
           filteredAndSortedProducts
             .slice(0, visibleItem)

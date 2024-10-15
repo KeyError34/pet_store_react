@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCategories } from '../../redux/slices/categoriesSlice';
 import { addToBasket } from '../../redux/slices/basketSlice';
@@ -71,7 +71,9 @@ function AllProducts() {
       </div>
       <FlexBox>
         {filteredAndSortedProducts.length === 0 ? (
-          <div>No products available</div>
+          <div style={{ margin: '2%', fontSize: '26px', color: 'red' }}>
+            No products available
+          </div>
         ) : (
           filteredAndSortedProducts
             .slice(0, visibleItem)

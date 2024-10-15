@@ -11,7 +11,7 @@ function ToggleButton({ initialText, toggledText, onClick, style , type}) {
   };
 
   return (
-    <button type={type} onClick={handleClick}>
+    <button style={style} type={type} onClick={handleClick}>
       {isToggled ? toggledText : initialText}
     </button>
   );

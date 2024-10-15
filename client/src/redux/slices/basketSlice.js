@@ -1,12 +1,8 @@
-
-
 import { createSlice } from '@reduxjs/toolkit';
-
 
 const saveToLocalStorage = state => {
   localStorage.setItem('basket', JSON.stringify(state));
 };
-
 
 const loadFromLocalStorage = () => {
   const storedBasket = localStorage.getItem('basket');
@@ -17,10 +13,9 @@ const loadFromLocalStorage = () => {
         totalPrice: 0,
         totalDiscount: 0,
         totalQuantity: 0,
-        discountApplied: false, 
+        discountApplied: false,
       };
 };
-
 
 const initialState = loadFromLocalStorage();
 
@@ -32,18 +27,21 @@ const basketSlice = createSlice({
       const item = action.payload;
       const existingItem = state.items.find(i => i.id === item.id);
 
+    
+      const priceToAdd =
+        item.discont_price !== null ? item.discont_price : item.price;
+
       if (existingItem) {
+      
         existingItem.quantity += 1;
       } else {
+       
         state.items.push({ ...item, quantity: 1 });
       }
 
-      state.totalPrice += item.price;
+      
+      state.totalPrice += priceToAdd;
       state.totalQuantity += 1;
-
-      if (item.discount_price) {
-        state.totalDiscount += item.price - item.discount_price;
-      }
 
       saveToLocalStorage(state);
     },
@@ -52,12 +50,13 @@ const basketSlice = createSlice({
       const existingItem = state.items.find(i => i.id === id);
 
       if (existingItem) {
-        state.totalPrice -= existingItem.price * existingItem.quantity;
-        state.totalDiscount -= existingItem.discount_price
-          ? existingItem.price - existingItem.discount_price
-          : 0;
+    
+        const priceToRemove =
+          existingItem.discont_price !== null
+            ? existingItem.discont_price
+            : existingItem.price;
+        state.totalPrice -= priceToRemove * existingItem.quantity;
         state.totalQuantity -= existingItem.quantity;
-
         state.items = state.items.filter(item => item.id !== id);
         saveToLocalStorage(state);
       }
@@ -67,19 +66,20 @@ const basketSlice = createSlice({
       const existingItem = state.items.find(i => i.id === id);
 
       if (existingItem) {
+        
+        const priceToRemove =
+          existingItem.discont_price !== null
+            ? existingItem.discont_price
+            : existingItem.price;
         if (existingItem.quantity > 1) {
           existingItem.quantity -= 1;
-          state.totalPrice -= existingItem.price;
+          state.totalPrice -= priceToRemove;
           state.totalQuantity -= 1;
         } else {
-          state.totalPrice -= existingItem.price;
+          state.totalPrice -= priceToRemove;
           state.totalQuantity -= 1;
           state.items = state.items.filter(item => item.id !== id);
         }
-
-        state.totalDiscount -= existingItem.discount_price
-          ? existingItem.price - existingItem.discount_price
-          : 0;
 
         saveToLocalStorage(state);
       }
@@ -89,21 +89,20 @@ const basketSlice = createSlice({
       state.totalPrice = 0;
       state.totalDiscount = 0;
       state.totalQuantity = 0;
-      state.discountApplied = false; 
       localStorage.removeItem('basket');
     },
-    applyDiscount: (state, action) => {
-    
+    applyDiscount: state => {
       if (!state.discountApplied) {
-        const discount = state.totalPrice * 0.05;
+        const discount = state.totalPrice * 0.05; 
         state.totalDiscount += discount;
         state.totalPrice -= discount;
-        state.discountApplied = true; 
+        state.discountApplied = true;
       }
       saveToLocalStorage(state);
     },
   },
 });
+
 
 export const {
   addToBasket,

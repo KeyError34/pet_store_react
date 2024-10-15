@@ -12,11 +12,11 @@ const CategoriesList = () => {
   }, [dispatch]);
 
   if (loading) {
-    return <div>Загрузка категорий...</div>;
+    return <div>Loading...</div>;
   }
 
   if (error) {
-    return <div>Ошибка: {error}</div>;
+    return <div>Error: {error}</div>;
   }
 
   return (

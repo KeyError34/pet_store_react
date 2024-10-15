@@ -1,0 +1,202 @@
+.linkToallCategories,
+.cstBtn,
+.closeX {
+  color: #282828;
+  padding: 0.7% 1%;
+  font-size: 16px;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+  width: 100%;
+  max-width: max-content;
+  max-height: max-content;
+  cursor: pointer;
+  &:hover {
+    background-color: #282828;
+    color: #ffffff;
+  }
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(19, 14, 18, 0.5);
+  }
+  &:active {
+    background-color: #ffffff;
+    color: #282828;
+    transform: scale(0.98);
+  }
+}
+
+.mainBasketItems {
+
+  border-radius: 4px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+ 
+  @media (max-width: 950px) {
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 50px;
+  }
+  .mainBasket {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding: 0 2.8%;
+    gap: 20px;
+    .cartContainer {
+  border: 0.5px solid #dddddd;
+  border-radius: 4px;
+      position: relative;
+      display: flex;
+      justify-content: flex-start;
+      gap: 2%;
+      .deskrCont {
+        display: flex;
+        flex-direction: column;
+        gap: 10%;
+        padding: 2%;
+        .titleDescr {
+          max-width: 90%;
+          @media (max-width: 700px) {
+            font-size: 18px;
+          }
+          @media (max-width: 450px) {
+            font-size: 14px;
+          }
+        }
+        .countsCont {
+          display: flex;
+
+          align-items: center;
+          .cstBtn {
+            border: 0.5px solid #dddddd;
+            padding: 1% 2%;
+          }
+        }
+        .closeX {
+          position: absolute;
+          top: 0;
+          right: 5px;
+          padding: 0;
+          border: none;
+          &:hover {
+            background-color: #ffffff;
+            color: #282828;
+          }
+        }
+      }
+
+      .imgContainer {
+        min-width: 200px;
+        min-height: 180px;
+        text-align: center;
+        @media (max-width: 700px) {
+          min-width: 150px;
+          min-height: 140px;
+        }
+        @media (max-width: 450px) {
+          min-width: 120px;
+          min-height: 110px;
+        }
+
+        img {
+          max-width: 200px;
+          max-height: 180px;
+          @media (max-width: 700px) {
+            max-width: 150px;
+            max-height: 140px;
+          }
+          @media (max-width: 450px) {
+            max-width: 120px;
+            max-height: 110px;
+          }
+        }
+      }
+    }
+  }
+  .orderCont {
+    background-color: #F1F3F4;
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 ;
+    padding: 40px 40px;
+    gap: 10px;
+    width: 100%;
+max-width: 500px;
+    // .formCont {
+    //   max-width: 70%;
+    // }
+@media (max-width: 950px) {
+       
+       max-width: 92%
+      }
+       @media (max-width: 878px) {
+        
+       max-width:100%
+          }
+
+    .labelPr {
+      color: #8b8b8b;
+      font-size: 32px;
+      padding-left: 10px;
+      @media (max-width: 950px) {
+        font-size: 28px;
+      }
+      @media (max-width: 700px) {
+        font-size: 24px;
+      }
+      @media (max-width: 450px) {
+        font-size: 20px;
+      }
+      .totalQuantity {
+        padding-left: 10%;
+        font-size: 40px;
+        color: #282828;
+        @media (max-width: 950px) {
+          font-size: 28px;
+        }
+        @media (max-width: 700px) {
+          font-size: 24px;
+        }
+        @media (max-width: 450px) {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+/* Медиазапрос для 900px */
+@media (max-width: 900px) {
+  .labelPr {
+    font-size: 28px; /* Уменьшение размера шрифта */
+
+    .totalQuantity {
+      font-size: 36px; /* Уменьшение размера текста для totalQuantity */
+    }
+  }
+}
+
+/* Медиазапрос для 700px */
+@media (max-width: 700px) {
+  .labelPr {
+    font-size: 24px; /* Уменьшение размера шрифта */
+
+    .totalQuantity {
+      padding-left: 8%; /* Изменение отступа */
+      font-size: 32px; /* Уменьшение размера текста */
+    }
+  }
+}
+
+/* Медиазапрос для 450px */
+@media (max-width: 450px) {
+  .labelPr {
+    font-size: 20px; /* Еще большее уменьшение размера шрифта */
+
+    .totalQuantity {
+      padding-left: 5%; /* Изменение отступа */
+      font-size: 28px; /* Уменьшение размера текста для маленьких экранов */
+    }
+  }
+}

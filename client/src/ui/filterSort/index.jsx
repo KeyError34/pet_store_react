@@ -1,5 +1,4 @@
 
-import React from 'react';
 import CustomSelect from '../select';
 import Input from '../input';
 import styles from './styles.module.scss';

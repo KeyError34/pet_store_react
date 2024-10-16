@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.5aaa6ad1.css",
+    "main.js": "/static/js/main.1f5f3ce3.js",
+    "static/media/cat_dogs.svg": "/static/media/cat_dogs.ff9d4e52a9aa1128939b9c85654e591c.svg",
+    "static/media/discont.png": "/static/media/discont.70e456dbb39e764b7454.png",
+    "static/media/404.png": "/static/media/404.df98dfd042249a72236e.png",
+    "static/media/logoMain.svg": "/static/media/logoMain.1a71d11a67f59d3738f85a9f9e8476aa.svg",
+    "static/media/whatsapp.svg": "/static/media/whatsapp.588826946018f40fc5b7e91f9011e8a4.svg",
+    "static/media/basket.svg": "/static/media/basket.5811eced3fe8014209a8d56d3d27c586.svg",
+    "index.html": "/index.html",
+    "static/media/marker.svg": "/static/media/marker.c6187879ab759570c8fef3fd45770ef3.svg",
+    "static/media/instagram.svg": "/static/media/instagram.20d815d51deb765758543982a6369546.svg",
+    "main.5aaa6ad1.css.map": "/static/css/main.5aaa6ad1.css.map",
+    "main.1f5f3ce3.js.map": "/static/js/main.1f5f3ce3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5aaa6ad1.css",
+    "static/js/main.1f5f3ce3.js"
+  ]
+}

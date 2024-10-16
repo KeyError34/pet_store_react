@@ -57,7 +57,7 @@ function Basket() {
   return (
     <div style={{ margin: '2.8%', width: '100%' }}>
       <div style={{ display: 'flex', marginBottom: '2.8%', alignItems: 'end' }}>
-        <h1>Categories</h1>
+        <h1>Shopping cart</h1>
         <div
           style={{
             height: '1px',
@@ -71,8 +71,15 @@ function Basket() {
         </span>
       </div>
       {items.length === 0 ? (
-        <div style={{ margin: '2%', fontSize: '26px', color: 'red' }}>
-          Your cart is empty
+        <div style={{ margin: '2%', fontSize: '26px' }}>
+          <p style={{ margin: '0 0 1.5rem' }}>
+            Looks like you have no items in your basket currently.
+          </p>
+          <ToggleButton
+            initialText="Continue Shopping"
+            toggledText="Continue Shopping"
+            onClick={onClickToStore}
+          />
         </div>
       ) : (
         <div className={styles.mainBasketItems}>
@@ -192,7 +199,7 @@ function Basket() {
               {errors.email && <p>{errors.email.message}</p>}
               <ToggleButton
                 type="submit"
-                initialText="Get a discount"
+                initialText="Order"
                 toggledText="Request Submitted"
                 style={{ width: '100%', maxWidth: '400px' }}
               />

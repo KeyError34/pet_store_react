@@ -23,16 +23,21 @@
     color: #282828;
     transform: scale(0.98);
   }
+  @media (max-width: 950px) {
+    font-size: 14px;
+  }
+   @media (max-width: 700px) {
+    font-size: 12px;
+  }
 }
 
 .mainBasketItems {
-
   border-radius: 4px;
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
- 
+
   @media (max-width: 950px) {
     flex-wrap: wrap;
     align-items: center;
@@ -45,8 +50,8 @@
     padding: 0 2.8%;
     gap: 20px;
     .cartContainer {
-  border: 0.5px solid #dddddd;
-  border-radius: 4px;
+      border: 0.5px solid #dddddd;
+      border-radius: 4px;
       position: relative;
       display: flex;
       justify-content: flex-start;
@@ -116,23 +121,21 @@
     }
   }
   .orderCont {
-    background-color: #F1F3F4;
+    background-color: #f1f3f4;
     display: flex;
     flex-direction: column;
-    margin: 0 0 ;
+    margin: 0 0;
     padding: 40px 40px;
     gap: 10px;
     width: 100%;
-max-width: 500px;
+    max-width: 500px;
 
-@media (max-width: 950px) {
-       
-       max-width: 92%
-      }
-       @media (max-width: 878px) {
-        
-       max-width:100%
-          }
+    @media (max-width: 950px) {
+      max-width: 92%;
+    }
+    @media (max-width: 878px) {
+      max-width: 100%;
+    }
 
     .labelPr {
       color: #8b8b8b;
@@ -163,4 +166,5 @@ max-width: 500px;
       }
     }
   }
+  
 }

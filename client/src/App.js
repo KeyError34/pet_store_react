@@ -28,11 +28,10 @@ function App() {
 
         <Route path="/basket" element={<Basket />} />
         <Route path="/discounts" element={<Discounts />} />
-      </Routes>
-      <Footer />
-      <Routes>
         <Route path="/*" element={<ErrorPage />} />
       </Routes>
+      <Footer />
+  
     </div>
   );
 }

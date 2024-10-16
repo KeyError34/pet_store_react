@@ -1,4 +1,3 @@
-
 import React from 'react';
 import FlexBox from '../../ui/flexBox';
 import ProductCard from '../../ui/card';
@@ -10,7 +9,7 @@ const DiscountedProducts = ({
   visibleItem,
   loadMore,
   display = 'flex',
-  style
+  style,
 }) => {
   const dispatch = useDispatch();
 
@@ -34,7 +33,7 @@ const DiscountedProducts = ({
                 title={product.title}
                 price={product.price}
                 discont_price={product.discont_price}
-                image={`http://localhost:3333/${product.image}`}
+                image={`https://olga-api.pet-shop.click/${product.image}`}
                 navigatePath={`/category/product/${product.id}`}
                 onAddToCart={() => handleAddToCart(product)}
                 initialText="Add to Cart"
@@ -48,14 +47,14 @@ const DiscountedProducts = ({
       {visibleItem < products.length && (
         <div
           style={{
-            display: display, 
+            display: display,
             justifyContent: 'center',
             margin: '10px',
           }}
         >
           <span
             style={{
-              display: display, 
+              display: display,
               cursor: 'pointer',
               padding: '5px 8px',
             }}

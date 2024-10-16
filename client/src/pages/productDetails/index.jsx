@@ -1,4 +1,3 @@
-
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -14,11 +13,9 @@ function ProductDetails() {
   const basketItems = useSelector(state => state.basket.items); // Получаем товары из корзины
   const dispatch = useDispatch();
 
-
   const product = categories
     .flatMap(category => category.data)
     .find(product => product.id === parseInt(productId));
-
 
   const basketProduct = basketItems.find(
     item => item.id === parseInt(productId)
@@ -32,33 +29,30 @@ function ProductDetails() {
     );
   }
 
-
   function handleAddToCart() {
     dispatch(addToBasket(product));
   }
 
-
   function handleIncrement() {
-    dispatch(addToBasket(product)); 
+    dispatch(addToBasket(product));
   }
-
 
   function handleDecrement() {
     if (basketProduct && basketProduct.quantity > 1) {
-      dispatch(decrementQuantity(product.id)); 
+      dispatch(decrementQuantity(product.id));
     } else {
       dispatch(removeFromBasket(product.id));
     }
   }
-  const descriptionWords = product.description.split(' '); 
+  const descriptionWords = product.description.split(' ');
   const visibleWords = isExpanded
     ? descriptionWords
-    : descriptionWords.slice(0, 20); 
+    : descriptionWords.slice(0, 20);
   return (
     <div className={styles.mainDescription}>
       <div className={styles.imgContainer}>
         <img
-          src={`http://localhost:3333/${product.image}`}
+          src={`https://olga-api.pet-shop.click/${product.image}`}
           alt={product.title}
         />
       </div>
@@ -99,7 +93,7 @@ function ProductDetails() {
             <h1 style={{ fontWeight: 'bold' }}>${product.price}</h1>
           )}
         </div>
-       
+
         {basketProduct ? (
           <div className={styles.countsCont}>
             <span className={styles.cstBtn} onClick={handleDecrement}>
@@ -120,7 +114,6 @@ function ProductDetails() {
               +
             </span>
 
-           
             <h2 style={{ paddingLeft: '10%', fontSize: '34px' }}>
               $
               {basketProduct.quantity *
@@ -128,15 +121,15 @@ function ProductDetails() {
             </h2>
           </div>
         ) : (
-        
           <button onClick={handleAddToCart}>Add to Basket</button>
         )}
-       
-        <div style={{maxWidth:'80%'}}>
-          {visibleWords.join(' ')} 
-        </div>
-        {descriptionWords.length > 20 && ( 
-          <span className={styles.seeMore} onClick={() => setIsExpanded(!isExpanded)}>
+
+        <div style={{ maxWidth: '80%' }}>{visibleWords.join(' ')}</div>
+        {descriptionWords.length > 20 && (
+          <span
+            className={styles.seeMore}
+            onClick={() => setIsExpanded(!isExpanded)}
+          >
             {isExpanded ? '...see less' : 'see more...'}
           </span>
         )}

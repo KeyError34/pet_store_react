@@ -88,7 +88,7 @@ function Basket() {
               <div className={styles.cartContainer} key={item.id}>
                 <div className={styles.imgContainer}>
                   <img
-                    src={`http://localhost:3333/${item.image}`}
+                    src={`https://olga-api.pet-shop.click/${item.image}`}
                     alt={item.title}
                   />
                 </div>

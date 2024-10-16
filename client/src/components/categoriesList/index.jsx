@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchCategories } from '../../redux/slices/categoriesSlice';
-import ProductCard from '../../ui/card'; 
+import ProductCard from '../../ui/card';
 
 const CategoriesList = () => {
   const dispatch = useDispatch();
@@ -25,13 +25,13 @@ const CategoriesList = () => {
         <ProductCard
           key={categoryData.category.id}
           title={categoryData.category.title}
-          image={`http://localhost:3333/${categoryData.category.image}`}
+          image={`https://olga-api.pet-shop.click/${categoryData.category.image}`}
           price={null}
           discont_price={null}
-          navigatePath={`/category/${categoryData.category.id}`} 
+          navigatePath={`/category/${categoryData.category.id}`}
           initialText="Show details"
           toggledText="Show details"
-          isCategoryButton={true} 
+          isCategoryButton={true}
         />
       ))}
     </>

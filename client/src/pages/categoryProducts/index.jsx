@@ -1,5 +1,4 @@
-
-import  { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCategories } from '../../redux/slices/categoriesSlice';
@@ -12,7 +11,7 @@ import NavBred from '../../ui/navRender';
 function CategoryProducts() {
   const { id } = useParams();
   const dispatch = useDispatch();
-  
+
   const { categories, loading, error } = useSelector(state => state.categories);
 
   const [filters, setFilters] = useState({
@@ -50,7 +49,6 @@ function CategoryProducts() {
     setVisibleItem(prevCount => prevCount + 4);
   }
 
-
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -66,7 +64,7 @@ function CategoryProducts() {
   return (
     <div style={{ width: '100%' }}>
       <div style={{ margin: '0 2.8%' }}>
-        <NavBred/>
+        <NavBred />
         <h1 style={{ margin: '2.8% 0' }}>
           {category ? category.category.title : 'Категория не найдена'}
         </h1>
@@ -99,20 +97,22 @@ function CategoryProducts() {
             No products available
           </div>
         ) : (
-          filteredAndSortedProducts.slice(0, visibleItem).map(product => (
-            <ProductCard
-              key={product.id}
-              title={product.title}
-              price={product.price}
-              discont_price={product.discont_price}
-              image={`http://localhost:3333/${product.image}`}
-              navigatePath={`/category/product/${product.id}`}
-              onAddToCart={() => handleAddToCart(product)} 
-              initialText="Add to Cart"
-              toggledText="Added"
-              isCategoryButton={false} 
-            />
-          ))
+          filteredAndSortedProducts
+            .slice(0, visibleItem)
+            .map(product => (
+              <ProductCard
+                key={product.id}
+                title={product.title}
+                price={product.price}
+                discont_price={product.discont_price}
+                image={`https://olga-api.pet-shop.click/${product.image}`}
+                navigatePath={`/category/product/${product.id}`}
+                onAddToCart={() => handleAddToCart(product)}
+                initialText="Add to Cart"
+                toggledText="Added"
+                isCategoryButton={false}
+              />
+            ))
         )}
       </FlexBox>
       {visibleItem < filteredAndSortedProducts.length && (

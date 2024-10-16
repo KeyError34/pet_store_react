@@ -83,7 +83,7 @@ function AllProducts() {
                 title={product.title}
                 price={product.price}
                 discont_price={product.discont_price}
-                image={`http://localhost:3333/${product.image}`}
+                image={`https://olga-api.pet-shop.click/${product.image}`}
                 onAddToCart={() => handleAddToCart(product)}
                 navigatePath={`/category/product/${product.id}`}
                 initialText="Add to Cart"

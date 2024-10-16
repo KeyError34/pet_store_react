@@ -6,7 +6,7 @@ export const sendOrder = createAsyncThunk(
   async (orderData, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        'http://localhost:3333/order/send',
+        'https://olga-api.pet-shop.click/order/send',
         orderData
       );
       return response.data;
@@ -22,12 +22,12 @@ const orderSlice = createSlice({
     order: null,
     loading: false,
     error: null,
-    discount: 0, 
+    discount: 0,
   },
   reducers: {
     clearOrder: state => {
       state.order = null;
-      state.discount = 0; 
+      state.discount = 0;
     },
   },
   extraReducers: builder => {
@@ -51,6 +51,6 @@ const orderSlice = createSlice({
   },
 });
 
-export const { clearOrder } = orderSlice.actions; 
+export const { clearOrder } = orderSlice.actions;
 
 export default orderSlice.reducer;

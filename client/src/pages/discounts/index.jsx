@@ -4,7 +4,7 @@ import { fetchCategories } from '../../redux/slices/categoriesSlice';
 import NavBred from '../../ui/navRender';
 import { filterAndSortProducts } from '../../utils/filterAndSortProducts';
 import FilterSort from '../../ui/filterSort';
-import DiscountedProducts from '../../components/discountProd';// Импортируем новый компонент
+import DiscountedProducts from '../../components/discountProd';
 
 function DiscountList() {
   const dispatch = useDispatch();
@@ -74,7 +74,7 @@ function DiscountList() {
         />
       </div>
 
-      {/* Передаем фильтрованные и отсортированные товары в новый компонент */}
+    
       <DiscountedProducts
         products={filteredAndSortedProducts}
         visibleItem={visibleItem}

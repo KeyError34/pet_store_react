@@ -10,7 +10,7 @@ import { useState } from 'react';
 function ProductDetails() {
   const { productId } = useParams();
   const categories = useSelector(state => state.categories.categories);
-  const basketItems = useSelector(state => state.basket.items); // Получаем товары из корзины
+  const basketItems = useSelector(state => state.basket.items); 
   const dispatch = useDispatch();
 
   const product = categories

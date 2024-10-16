@@ -9,7 +9,9 @@ export const fetchCategories = createAsyncThunk(
 
  
     for (let i = 1; i <= 8; i++) {
-      categoriesRequests.push(axios.get(`http://localhost:3333/categories/${i}`)); 
+      categoriesRequests.push(
+        axios.get(`https://api.pet-shop.click/categories/${i}`)
+      ); 
     }
 
     const responses = await Promise.all(categoriesRequests);

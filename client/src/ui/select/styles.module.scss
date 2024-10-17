@@ -22,7 +22,7 @@
 }
 
 .selectedText {
-  white-space: nowrap; /* Не переносить текст на новую строку */
+  white-space: nowrap; 
 }
 
 .arrow {
@@ -37,7 +37,7 @@
   background-color: white;
   border: 1px solid #ccc;
   border-radius: 4px;
-  z-index: 1000;
+  z-index: 3000;
   max-height: 200px;
   overflow-y: auto;
 }

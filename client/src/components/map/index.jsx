@@ -1,19 +1,19 @@
-
-
 import { Icon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import iconMarker from '../../assets/icons/marker.svg'
-import { MapContainer, TileLayer, Marker, Popup} from 'react-leaflet';
+import iconMarker from '../../assets/icons/marker.svg';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
 function MapComponent() {
   const markers = {
     geocod: [52.511167, 13.404702],
-    popUp: 'IT Career Hub'
-  }
+    popUp: 'IT Career Hub',
+  };
+
   const customIcon = new Icon({
     iconUrl: iconMarker,
-    iconSize:[38,38]
-  })
+    iconSize: [38, 38],
+  });
+
   return (
     <>
       <MapContainer center={[52.511167, 13.404702]} zoom={13}>
@@ -22,10 +22,19 @@ function MapComponent() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <Marker position={markers.geocod} icon={customIcon}>
-          <Popup>{markers.popUp}</Popup>
+          <Popup>
+            <a
+              href="https://www.google.com/maps?q=52.511167,13.404702"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {markers.popUp} - Open in Google Maps
+            </a>
+          </Popup>
         </Marker>
       </MapContainer>
     </>
   );
 }
+
 export default MapComponent;

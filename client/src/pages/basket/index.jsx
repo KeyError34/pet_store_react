@@ -12,12 +12,14 @@ import styles from './steles.module.scss';
 import Input from '../../ui/input';
 import { useForm } from 'react-hook-form';
 import ToggleButton from '../../ui/button';
+
 function Basket() {
   const dispatch = useDispatch();
   const { items, totalPrice, totalQuantity, discountApplied } = useSelector(
     state => state.basket
   );
   const [modalOpen, setModalOpen] = React.useState(false);
+  const [isSubmitting, setIsSubmitting] = React.useState(false); // состояние для отслеживания отправки формы
   const navigate = useNavigate();
   const {
     register,
@@ -25,14 +27,23 @@ function Basket() {
     formState: { errors },
     reset,
   } = useForm();
+
   function handleClearBasket() {
     dispatch(clearBasket());
   }
 
-  function handleCheckout() {
+  function handleCheckout(data) {
+    setIsSubmitting(true); // устанавливаем состояние отправки в true
+    console.log('Form submitted:', data);
     setModalOpen(true);
     handleClearBasket();
     reset();
+
+    // Автоматически закрываем модальное окно через несколько секунд
+    setTimeout(() => {
+      setModalOpen(false);
+      setIsSubmitting(false); // сбрасываем состояние отправки
+    }, 5000);
   }
 
   function handleIncrement(item) {
@@ -46,11 +57,12 @@ function Basket() {
   function handleRemove(id) {
     dispatch(removeFromBasket(id));
   }
+
   function onClickToStore() {
     navigate('/all_products');
   }
-  const safeTotalPrice = totalPrice > 0 ? totalPrice : 0;
 
+  const safeTotalPrice = totalPrice > 0 ? totalPrice : 0;
   const discount = discountApplied ? safeTotalPrice * 0.03 : 0;
   const finalPrice = safeTotalPrice - discount;
 
@@ -109,7 +121,9 @@ function Basket() {
                         borderTop: '0.5px solid #DDDDDD',
                         borderBottom: '0.5px solid #DDDDDD',
                         borderRadius: '4px',
-                      }}
+
+
+}}
                     >
                       {item.quantity}
                     </h4>
@@ -132,7 +146,7 @@ function Basket() {
                   </div>
                 </div>
               </div>
-            ))}{' '}
+            ))}
           </div>
           <div className={styles.orderCont}>
             <h1>Order details</h1>
@@ -200,8 +214,9 @@ function Basket() {
               <ToggleButton
                 type="submit"
                 initialText="Order"
-                toggledText="Request Submitted"
+                toggledText={isSubmitting ? "Request Submitted" : "Order"} // обновляем текст кнопки в зависимости от состояния
                 style={{ width: '100%', maxWidth: '400px' }}
+                disabled={isSubmitting} // блокируем кнопку во время отправки
               />
             </form>
           </div>

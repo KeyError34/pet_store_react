@@ -19,7 +19,7 @@ function Basket() {
     state => state.basket
   );
   const [modalOpen, setModalOpen] = React.useState(false);
-  const [isSubmitting, setIsSubmitting] = React.useState(false); // состояние для отслеживания отправки формы
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
   const navigate = useNavigate();
   const {
     register,
@@ -33,16 +33,16 @@ function Basket() {
   }
 
   function handleCheckout(data) {
-    setIsSubmitting(true); // устанавливаем состояние отправки в true
+    setIsSubmitting(true); 
     console.log('Form submitted:', data);
     setModalOpen(true);
     handleClearBasket();
     reset();
 
-    // Автоматически закрываем модальное окно через несколько секунд
+    
     setTimeout(() => {
       setModalOpen(false);
-      setIsSubmitting(false); // сбрасываем состояние отправки
+      setIsSubmitting(false); 
     }, 5000);
   }
 
@@ -214,9 +214,9 @@ function Basket() {
               <ToggleButton
                 type="submit"
                 initialText="Order"
-                toggledText={isSubmitting ? "Request Submitted" : "Order"} // обновляем текст кнопки в зависимости от состояния
+                toggledText={isSubmitting ? "Request Submitted" : "Order"}
                 style={{ width: '100%', maxWidth: '400px' }}
-                disabled={isSubmitting} // блокируем кнопку во время отправки
+                disabled={isSubmitting} 
               />
             </form>
           </div>

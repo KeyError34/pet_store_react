@@ -13,7 +13,7 @@ import Footer from './components/footer';
 
 function App() {
   return (
-    <div style={{ width: '100vw', maxWidth: ' 1440px', margin: '0 auto' }}>
+    <div style={{ width: '100vw', maxWidth: '1440px', margin: '0 auto' }}>
       <Header />
 
       <Routes>

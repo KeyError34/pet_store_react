@@ -10,7 +10,8 @@ const Item = styled(Paper)({
   flexDirection: 'column',
   justifyContent: 'center',
   backgroundColor: '#F1F3F4',
-  width:'100%',
+  width: '100%',
+  
   minHeight: '177px',
   padding: '2.8%',
   textAlign: 'start',
@@ -18,7 +19,7 @@ const Item = styled(Paper)({
   '@media (max-width: 900px)': {
     minHeight: 'auto',
     padding: '5%',
-  }
+  },
 });
 function GridFooter() {
   return (
